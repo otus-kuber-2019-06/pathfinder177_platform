@@ -1,14 +1,11 @@
-FROM nginx:1.12.2-alpine
-
-RUN mkdir /app
-
-WORKDIR /app
-
-RUN rm -f /etc/nginx/nginx.conf
+FROM nginx:1.17
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY default.conf /etc/nginx/conf.d/default.conf
+RUN usermod -u 1001 nginx
+
+RUN mkdir -p /var/run/nginx /app
+RUN chown nginx:nginx /var/run/nginx /var/cache/nginx /app
 
 EXPOSE 8000
 

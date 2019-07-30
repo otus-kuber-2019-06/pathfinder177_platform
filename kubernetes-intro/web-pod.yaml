@@ -8,6 +8,10 @@ spec:
   containers:
   - name: web 
     image: pathfinder177/kubehw1:ngalp
+    readinessProbe:
+      httpGet:
+        path: /index.html
+        port: 8000
     volumeMounts:
     - name: app
       mountPath: /app

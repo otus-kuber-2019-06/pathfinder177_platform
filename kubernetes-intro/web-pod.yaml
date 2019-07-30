@@ -8,12 +8,12 @@ spec:
   containers:
   - name: web 
     image: pathfinder177/kubehw1:ngalp
+    livenessProbe:
+      tcpSocket: { port: 8000 }
     readinessProbe:
       httpGet:
         path: /index.html
         port: 80
-    livenessProbe:
-      tcpSocket: { port: 8000 }
     volumeMounts:
     - name: app
       mountPath: /app

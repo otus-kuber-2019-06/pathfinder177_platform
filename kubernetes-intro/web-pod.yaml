@@ -11,7 +11,9 @@ spec:
     readinessProbe:
       httpGet:
         path: /index.html
-        port: 8000
+        port: 80
+    livenessProbe:
+      tcpSocket: { port: 8000 }
     volumeMounts:
     - name: app
       mountPath: /app

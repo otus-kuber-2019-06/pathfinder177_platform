@@ -21,6 +21,13 @@ spec:
       containers:
       - name: web 
         image: pathfinder177/kubehw1:ngalp
+        #resources:
+          #limits:
+            #cpu: "4"
+            #memory: "4G"
+          #requests:
+            #cpu: "1000m"
+            #memory: "1G"
         livenessProbe:
           tcpSocket:
             port: 8000

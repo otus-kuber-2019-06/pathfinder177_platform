@@ -20,6 +20,7 @@ spec:
       containers:
       - name: web 
         image: pathfinder177/kubehw1:ngalp
+        imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
             port: 8000

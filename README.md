@@ -1,14 +1,21 @@
 # pathfinder177_platform
-homework-3
-»зменил ссылку дл€ генерации index.html
-1. ƒобавил readiness-probe дл€ проверки готовности пода к запуску методом httpGet с корректным портом
-2. ƒобавил liveness-probe дл€ проверки состо€ни€ веб-сервера методом tcpSocket
-3. —амопроверка:
- онфигураци€ не имеет смысла, т.к. запущенный процесс веб-сервера не означает готовность обслуживать запросы
-»меет смысл в случае, если веб-сервер об€зательно должен быть запущен перед стартом какого-то приложени€
-4. Ќаписал манифест дл€ deployment, убрав лишние строки, и добавив template дл€ подов
-5. ѕроверил, что применение манифеста проходит успешно
-6. ƒобавил блок strategy, который отвечает за замену подов на новые в случае обновлени€/удалени€/???/profit!
-7. maxSurge - параметр, который отвечает за % или количество подов, создаваемых одновременно в процессе обновлени€
-   maxUnavailable - параметр, который отвечает за количество подов, которые могут быть недоступны в один момент времени в процессе обновлени€
-8. Ќаписал манифест дл€ Service - type ClusterIP
+homework-2
+
+task-1
+1) —оздал ServiceAccount bob в первом манифесте
+2) —оздал ClusterRoleBinding на основе ClusterRole admin дл€ subject bob во втором манифесте
+
+task-2
+1) —оздал namespace prometheus в первом манифесте
+2) —оздал service account carol во втором манифесте
+3) —оздал ClusterRole pod-reader с verbs get, list,watch в третьем манифесте
+4) —оздал Rolebinding дл€ subject groups, 
+в котором определил system:serviceaccounts:prometheus дл€
+делегировани€ роли pod-reader всем serviceaccounts в пределах namespace prometheus в четвертом манифесте
+
+task-3
+1) создал namespace dev
+2) создал serviceaccount jane в namespace dev
+3) —делал Rolebinding дл€ делегировани€ jane роли admin в namespace dev
+4) создал serviceaccount ken в namespace dev
+5) —делал Rolebinding дл€ делегировани€ ken роли view в namespace dev

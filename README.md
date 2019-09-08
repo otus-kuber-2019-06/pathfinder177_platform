@@ -15,6 +15,6 @@ https://github.com/kubernetes-csi/csi-driver-host-path
 4) Включить необходимые плагины для создания snapshots:
 defaultStorageClass
 VolumeSnapshotDataSource(alpha)
-
+5) Описать объект типо VolumeSnapshot(при указании стандартного класса csi-hostpath-snapclass объект VolumeSnashotClass можно не создавать)
 
 sCN in PV = sCN in PVC

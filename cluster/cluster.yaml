@@ -1,12 +1,3 @@
-apiVersion: kind.sigs.k8s.io/v1alpha3
-kind: Cluster
-turn on: 
-VolumeSnapshotDataSource=true
-for
-apiserver
-scheduler
-controllermanager
-
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: initConfiguration
 metadata:

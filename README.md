@@ -3,19 +3,18 @@ Branch kubernetes-storage
 
 Задача - подготовка инфраструктуры
 
-Как установить csi driver
-dynamic provisioning?
-volume snapshot class?
-
 SINodeInfo feature gate must be enabled.
 enable the VolumeSnapshotDataSource
 Включить defaultstorageclass
-Включить снапшоты(это альфа)
-1) Создать pod с описанием pv hostpath
-2) Создать pv, host-path, описать storage-class
-HP - прокидывание директории /data в контейнер
-3) Создание pvc
-4) Создать Storage class для CSI HPD
-5) В cluster описать VolumeSnapshotContent из pvc(csi-hpd), специфицировать snapshot-class-name для hpd
+
+0)Установить csi-driver-host-path
+https://github.com/kubernetes-csi/csi-driver-host-path
+1) Создать hostpath CSI storage class
+2) Создать hostpath CSI PVC(существующий PV тоже можно использовать)
+3) Создать pod с hostpath CSI PVC
+4) Включить необходимые плагины для создания snapshots:
+defaultStorageClass
+VolumeSnapshotDataSource(alpha)
+
 
 sCN in PV = sCN in PVC

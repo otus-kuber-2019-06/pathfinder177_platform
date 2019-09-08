@@ -3,8 +3,9 @@ kind: Pod
 metadata:
   name: host-path-pod
 spec:
+  restartPolicy: Always
   volumes:
-    - name: host-path-volume
+    - name: host-path-csi-volume
       persistentVolumeClaim:
         claimName: host-path-claim
   containers:
@@ -13,4 +14,4 @@ spec:
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: "/data"
-        name: host-path-volume
+        name: host-path-csi-volume

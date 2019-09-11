@@ -8,7 +8,7 @@ spec:
   volumes:
     - name: host-path-csi-volume
       persistentVolumeClaim:
-        claimName: host-path-claim
+        claimName: storage-pvc
   containers: 
     - image: pathfinder177/kubehw1:ngalp
       name: ngalp

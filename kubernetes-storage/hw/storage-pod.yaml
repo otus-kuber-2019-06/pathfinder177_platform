@@ -10,7 +10,9 @@ spec:
       persistentVolumeClaim:
         claimName: storage-pvc
   containers: 
-    - image: pathfinder177/kubehw1:ngalp
+    - image: ubuntu
+      command: ["/bin/sh", "-c"]
+      args: [ "chmod 777 /data" ]
       name: ngalp
       volumeMounts:
         - name: host-path-csi-volume

@@ -13,7 +13,6 @@ spec:
     - image: ubuntu
       command: ["/bin/sh", "-c"]
       args: [ "chmod 777 /data" ]
-      name: ngalp
       volumeMounts:
         - name: host-path-csi-volume
           mountPath: "/data"

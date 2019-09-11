@@ -11,6 +11,7 @@ spec:
         claimName: storage-pvc
   containers: 
     - image: ubuntu
+      name: busybox
       command: ["/bin/sh", "-c"]
       args: [ "chmod 777 /data" ]
       volumeMounts:

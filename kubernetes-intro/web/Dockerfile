@@ -1,10 +1,13 @@
-FROM nginx:1.17.3-alpine as original_image
-FROM scratch as nginx
-COPY --chown=1001:1001 --from=original_image / /
-RUN  mkdir -p /app && \
-      addgroup -S appgroup -g 1001  && \
-      adduser -S appuser -D -u 1001 -G appgroup -g appgroup
-USER appuser
+FROM nginx:1.17
+
 COPY nginx.conf /etc/nginx/nginx.conf
+
+RUN usermod -u 1001 nginx
+RUN mkdir -p /var/run/nginx /app
+RUN chown nginx:nginx /var/run/nginx /var/cache/nginx /app
+
+COPY homework.html /app
+
 EXPOSE 8000
-CMD ["nginx", "-g", "daemon off;"]
+
+USER 1001

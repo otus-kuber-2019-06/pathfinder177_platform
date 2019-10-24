@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+hw-7
+kubernetes-operators
+
+1) 
+=======
 homework-7
 
 Operator
@@ -8,3 +14,4 @@ Operator
 4) Interaction with this object could be by kubectl
 5) Validation added to CRD to prohibit arbitrary fields
 6) List of required fields added to CRD: Object:properties:image:!:type:
+>>>>>>> 85f871a69425842bb1e95495dc8976aea11f3cd7

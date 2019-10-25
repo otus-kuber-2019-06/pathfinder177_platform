@@ -8,6 +8,6 @@ roleRef:
   kind: Role
   name: tiller-cert-manager
 subjects:
-- kind: ServiceAccount
-  name: tiller-cert-manager
-  namespace: cert-manager
+  - kind: ServiceAccount
+    name: tiller-cert-manager
+    namespace: cert-manager

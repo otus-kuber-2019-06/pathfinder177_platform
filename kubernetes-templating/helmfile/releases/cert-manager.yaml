@@ -1,0 +1,14 @@
+---
+  bases: ../commons/environments.yaml
+---
+  releases:
+    name: cert-manager
+    namespace: cert-manager
+    labels:
+      chart: "cert-manager"
+      repo: "jetstack"
+    chart: "jetstack/cert-manager"
+    version: {{ .Environment.Values.helm.cert-manager.version }}
+    wait: true
+    installed: {{ .Environment.Values.helm | getOrNil "cert-manager.enabled" | default true }}
+    tillerNamespace: cert-manager

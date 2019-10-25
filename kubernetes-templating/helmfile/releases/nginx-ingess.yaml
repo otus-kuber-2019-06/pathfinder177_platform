@@ -1,0 +1,17 @@
+---
+bases:
+  - ../commons/environments.yaml
+---
+releases:
+- name: "nginx-ingress"
+  namespace: "nginx-ingress"
+  labels:
+    chart: "nginx-ingress"
+    repo: "stable"
+    component: "balancing"
+  chart: "stable/nginx-ingress"
+  version: {{ .Environment.Values.helm.nginx_ingress.version }}
+  wait: true
+  installed: {{ .Environment.Values.helm | getOrNil "nginx_ingress.enabled" | default true }}
+  - name: "controller.metrics.enabled"
+    value: {{ .Environment.Values.helm.nginx_ingress.metrics_enabled }}

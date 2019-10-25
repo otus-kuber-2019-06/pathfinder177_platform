@@ -1,0 +1,14 @@
+---
+bases:
+  - ../commons/environments.yaml
+---
+releases:
+  - name: "harbor"
+    namespace: "harbor"
+    labels:
+      chart: "harbor"
+      repo: "harbor"
+    chart: "harbor/harbor"
+    version: {{ .Environment.Values.helm.harbor.version }}
+    wait: false
+    installed: {{ .Environment.Values.helm | getOrNil "harbor.enabled" | default true }}

@@ -1,0 +1,6 @@
+---
+helmfiles:
+  - "commons/repos.yaml"
+  - "releases/nginx-ingress.yaml"
+  - "releases/cert-manager.yaml"
+  - "releases/harbor.yaml"

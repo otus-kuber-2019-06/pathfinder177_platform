@@ -3,10 +3,10 @@ expose:
   type: ingress
   tls:
     enabled: true
-    secretName: "harbor.34.89.13.173.xip.io"
+    secretName: "harbor.35.242.140.121.xip.io"
   ingress:
     hosts:
-      core: harbor.34.89.13.173.xip.io
+      core: harbor.35.242.140.121.xip.io
     controller: default
     annotations:
       kubernetes.io/ingress.class: nginx

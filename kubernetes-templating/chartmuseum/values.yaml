@@ -7,7 +7,7 @@ ingress:
     certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
     certmanager.k8s.io/acme-challenge-type: http01
   hosts:
-    - name: chartmuseum.34.89.13.173.xip.io
+    - name: chartmuseum.35.242.140.121.xip.io
       path: /
       tls: true
-      tlsSecret: chartmuseum.34.89.13.173.xip.io
+      tlsSecret: chartmuseum.35.242.140.121.xip.io

@@ -3,7 +3,6 @@ kind: Kustomization
 namePrefix: prod-
 namespace: socks-shop-prod
 commonLabels:
-  name: prod-
   environment: prod
-resources:
+bases:
   - ../../base

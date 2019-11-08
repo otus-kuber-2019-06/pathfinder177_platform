@@ -3,7 +3,6 @@ kind: Kustomization
 namePrefix: stage-
 namespace: socks-shop
 commonLabels:
-  name: stage-
   environment: dev
-resources:
+bases:
   - ../../base

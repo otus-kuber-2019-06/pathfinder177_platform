@@ -28,7 +28,7 @@ metadata:
   name: prom-crb
 subjects:
 - kind: Group
-  name: "system:serviceaccounts:prometheus"
+  name: "system:serviceaccount:prometheus"
   namespace: prometheus
 roleRef:
   kind: ClusterRole

@@ -17,7 +17,7 @@ kind: ClusterRole
 metadata:
   name: prom-cr
 rules:
-- apiGroups: ["v1"]
+- apiGroups: [""]
   resources: ["pods"]
   verbs: ["get", "list", "watch"]
 
@@ -28,7 +28,7 @@ metadata:
   name: prom-crb
 subjects:
 - kind: Group
-  name: "system:serviceaccount:prometheus"
+  name: system:serviceaccounts:prometheus
   namespace: prometheus
 roleRef:
   kind: ClusterRole

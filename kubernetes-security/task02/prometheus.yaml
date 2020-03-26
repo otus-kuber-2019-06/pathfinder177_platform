@@ -29,7 +29,7 @@ metadata:
 subjects:
 - kind: Group
   name: "system:serviceaccounts:prometheus"
-  #namespace: prometheus
+  namespace: prometheus
 roleRef:
   kind: ClusterRole
   name: prom-cr

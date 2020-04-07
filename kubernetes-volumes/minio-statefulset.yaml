@@ -3,11 +3,10 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: minio-secret
-  namespace: default
 type: Opaque
 data:
-  minio_access_key: Im1pbmlvIgo=
-  minio_secret_key: Im1pbmlvMTIzIgo=
+  minio-access-key: Im1pbmlvIgo=
+  minio-secret-key: Im1pbmlvMTIzIgo=
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -32,12 +31,12 @@ spec:
           valueFrom:
               secretKeyRef:
                 name: minio-secret
-                key: minio_access_key
+                key: minio-access-key
         - name: MINIO_SECRET_KEY
           valueFrom:
               secretKeyRef:
                 name: minio-secret
-                key: minio_secret_key
+                key: minio-secret-key
         image: minio/minio:RELEASE.2019-07-10T00-34-56Z
         args:
         - server

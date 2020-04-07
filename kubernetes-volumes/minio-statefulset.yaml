@@ -8,6 +8,7 @@ type: Opaque
 data:
   minio_access_key: Im1pbmlvIgo=
   minio_secret_key: Im1pbmlvMTIzIgo=
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

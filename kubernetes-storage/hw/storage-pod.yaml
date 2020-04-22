@@ -1,21 +1,22 @@
+---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: storage-pod
+  name: web
   labels:
-    name: storage-pod
+    app: web
 spec:
-  restartPolicy: Always
   containers:
-    - image: ubuntu
-      command: ["/bin/sh", "-c"]
-      args: [ "tail -f /dev/null" ]
-      name: busybox
-      volumeMounts:
-        - name: vol
-          mountPath: /data 
-          mountPropagation: "HostToContainer"
+  - name: web
+    image: pathfinder177/ki1:web-server
+    volumeMounts:
+    - name: data
+      mountPath: /data
+    volumeMounts:
+    - name: data
+      mountPath: /data
+      mountPropagation: "HostToContainer"
   volumes:
-    - name: vol
-      persistentVolumeClaim:
-        claimName: storage-pvc
+  - name: data
+    persistentVolumeClaim:
+      claimName: storage-pvc

@@ -11,11 +11,18 @@ spec:
       image: pathfinder177/ki1:web-server
       command: ["/bin/sh", "-c"]
       args: [ "tail -f /dev/null" ]
-      name: busybox
+      name: storage-pod
       volumeMounts:
         - name: vol
           mountPath: /data 
           mountPropagation: "HostToContainer"
+  initContainers:
+  - name: busybox
+    image: busybox:1.31.0
+    command: ['sh', '-c', 'wget -O- https://raw.githubusercontent.com/express42/otus-platform-snippets/master/Module-02/Introduction-to-Kubernetes/wget.sh | sh']
+    volumeMounts:
+    - name: vol
+      mountPath: /data
   volumes:
   - name: vol
     persistentVolumeClaim:

@@ -1,0 +1,21 @@
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: netperf-calico-policy
+  labels:
+spec:
+  order: 10
+  podSelector:
+    matchLabels:
+      app: netperf-operator
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: netperf-operator
+  egress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: netperf-operator
+

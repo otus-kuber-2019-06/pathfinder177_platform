@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kopf-deployment
-  labels:
-    app: kopf
+  name: kopfexample-operator
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
-      app: kopf
+      application: kopfexample-operator
   template:
     metadata:
       labels:
-        app: kopf
+        application: kopfexample-operator
     spec:
+      serviceAccountName: kopf
       containers:
-      - name: kopf
+      - name: the-only-one
+        imagePullPolicy: Always
         image: pathfinder177/ki1:kopf
-        imagePullPolicy: IfNotPresent

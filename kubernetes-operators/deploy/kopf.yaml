@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kopf-deployment
+  labels:
+    app: kopf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kopf
+  template:
+    metadata:
+      labels:
+        app: kopf
+    spec:
+      containers:
+      - name: kopf
+        image: pathfinder177/ki1:kopf
+        imagePullPolicy: IfNotPresent

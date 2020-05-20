@@ -119,3 +119,46 @@ issuing_ca          -----BEGIN CERTIFICATE-----
 MIIDnDCCAoSgAwIBAgIUQ0Sq05hyCDY8Z/7rSjREd+age1cwDQYJKoZIhvcNAQEL
 BQAwFTETMBEGA1UEAxMKZXhhbXBsZS5ydTAeFw0yMDA1MTYxNTI0NTVaFw0yNTA1
 MTUxNTI1MjVaMCwxKjAoBgNVBAMTIWV4YW1wbGUucnUgSW50ZXJtZWRpYXRlIEF1
+
+I) To enable tls:
+
+in helm values set:
+0) create a secret with data in base64 that you will put into part 3 - tls_cert, tls_key
+
+1) extraEnvironmentVars:
+    VAULT_CACERT: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+2) extraVolumes:
+    - type: secret
+      name: vault-certs - folder name on the container fs
+      path: null # /vault/userconfig by default
+3) below ha config part:
+  config: |
+        ui = true
+        listener "tcp" {
+          tls_disable = 0 - turn off tls disabling
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+          tls_cert_file =  "/vault/userconfig/vault-certs/tls.crt" - path+secret name+crt name
+          tls_key_file = "/vault/userconfig/vault-certs/tls.key" - path+secret name+key name
+        }
+4) use the valid certificate CA for VAULT or put the CA.crt into /etc/pki/ca-trust/source/anchors and execute "update-ca-trust" on the VAULT management node
+
+II) To enable auto-unseal - GCP
+
+1) Enable GOOGLE KMS API
+2) Create Service Account with Cloud Identity and Access Management role roles/cloudkms.admin, roles/owner, or roles/editor in a json format and save this account
+3) Create a set of crypto keys
+4) Create a secret with kms.json as a data in base64
+5) Insert in values in ha section
+seal "gcpckms" {
+        credentials = "kms.json"
+        project     = "kthw-276209"
+        region      = "europe-north1"
+        key_ring    = "vault-keys"
+        crypto_key  = "vault-key"
+      }
+or set identical options via env vars
+
+6) Create a Role roles/cloudkms.admin, roles/owner, or roles/editor on IAM&Admin Page
+7) Perform there steps 
+https://wwwvaultprojectiodocsconceptssealhtml#migration-post-vault-1-4-0

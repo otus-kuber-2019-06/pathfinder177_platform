@@ -1,0 +1,26 @@
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    commonName: "harbor.35.228.114.10.nip.io"
+  ingress:
+    hosts:
+      core: harbor.35.228.114.10.nip.io
+    controller: default
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/acme-challenge-type: http01
+      cert-manager.io/issuer-kind: ClusterIssuer
+externalURL: https://harbor.35.228.114.10.nip.io
+imagePullPolicy: IfNotPresent
+updateStrategy:
+  type: RollingUpdate
+logLevel: debug
+harborAdminPassword: "n0tWE@kH@ZBO#r"
+trivy:
+  enabled: false
+notary:
+  enabled: false

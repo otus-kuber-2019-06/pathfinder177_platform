@@ -1,0 +1,16 @@
+---
+bases:
+  - ../vars.yaml
+---
+releases:
+- name: "nginx-ingress"
+  namespace: "nginx-ingress"
+  labels:
+    chart: "nginx-ingress"
+    repo: "stable"
+    component: "balancing"  
+  chart: "stable/nginx-ingress"
+  version: {{ .Environment.Values.helm.nginx_ingress.version }}
+  wait: true
+  atomic: true
+  installed: {{ .Environment.Values.helm.nginx_ingress.enabled | default true }}

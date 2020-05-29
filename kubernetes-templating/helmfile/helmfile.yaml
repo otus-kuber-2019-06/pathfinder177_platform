@@ -1,0 +1,8 @@
+---
+helmfiles:
+  #- "releases/nginx-ingress.yaml"
+  #- "releases/cert-manager.yaml"
+  - "releases/harbor.yaml"
+
+#helmDefaults:
+#  tillerless: true

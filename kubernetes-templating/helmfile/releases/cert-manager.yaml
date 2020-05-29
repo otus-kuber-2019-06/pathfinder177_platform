@@ -1,0 +1,17 @@
+---
+bases:
+  - ../vars.yaml
+---
+releases:
+- name: "cert-manager"
+  namespace: "cert-manager"
+  labels:
+    chart: "cert-manager"
+    repo: "jetstack"
+  chart: "jetstack/cert-manager"
+  version: {{ .Environment.Values.helm.cert_manager.version }}
+  wait: true
+  installed: {{ .Environment.Values.helm.cert_manager.enabled }}
+  values:
+    - installCRDs: true
+  

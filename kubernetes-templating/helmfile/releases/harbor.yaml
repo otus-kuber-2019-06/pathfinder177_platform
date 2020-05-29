@@ -1,0 +1,16 @@
+---
+bases:
+  - ../vars.yaml
+---
+releases:
+- name: "harbor"
+  namespace: "harbor"
+  labels:
+    chart: "harbor"
+    repo: "harbor"
+  chart: "harbor/harbor"
+  version: {{ .Environment.Values.helm.harbor.version }}
+  wait: true
+  installed: {{ .Environment.Values.helm.harbor.enabled }}
+  values:
+    - harborValues.yaml

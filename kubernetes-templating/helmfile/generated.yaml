@@ -1,0 +1,12 @@
+helm:
+  nginx_ingress:
+    version: 1.39.0
+    enabled: true
+
+  cert_manager:
+    version: 0.15.0
+    enabled: true
+
+  harbor:
+    version: 1.4.0
+    enabled: true

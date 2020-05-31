@@ -1,0 +1,8 @@
+dependencies:
+- name: frontend
+  version: 0.1.0
+  repository: "file://../frontend"
+
+- name: redis-cart
+  version: 0.1.0
+  repository: "file://../redis-cart"

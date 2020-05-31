@@ -1,0 +1,9 @@
+dependencies:
+- name: frontend
+  repository: file://../frontend
+  version: 0.1.0
+- name: redis-cart
+  repository: file://../redis-cart
+  version: 0.1.0
+digest: sha256:0b7cacb54b221de7d04189a9b61b68a798ffe952eaa375db113f0801f78ab4f5
+generated: "2020-05-31T19:15:10.329714388+03:00"

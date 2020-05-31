@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: socks-shop-ingress
+  namespace: {{ .Values.ingress.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: socks-shop
+    meta.helm.sh/release-namespace: {{ .Values.ingress.namespace }}
+spec:
+  rules:
+  - host: shop.35.228.60.128.nip.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: frontend
+          servicePort: 32642

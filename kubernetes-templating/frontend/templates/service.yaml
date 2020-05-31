@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+{{ if eq .Values.service.serviceType "NodePort" }}
+  type: NodePort
+  selector:
+    app: frontend
+  ports:
+  - name: http
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}
+    nodePort: {{ .Values.service.nodePort }}
+{{ else }}
+  type: ClusterIP
+  selector:
+    app: frontend
+{{ end }}
